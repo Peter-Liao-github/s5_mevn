@@ -1,7 +1,7 @@
 <template lang='pug'>
   .hello
-    h1 ProductsComponent
-    p ProductsComponent Now
+    h1 CustomizedsComponent
+    p CustomizedsComponent Now
 </template>
 
 <script>
