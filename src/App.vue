@@ -27,6 +27,10 @@
             router-link(to="/products") 產品資訊/下載
           li
             router-link(to="/customizeds") 客製化選用表
+          li
+            router-link(to="/create") 管理新增
+          li
+            router-link(to="/edit") 管理修改
     //- router view =========================================
     router-view.my-container 
     //- fixed line QR =========================================
