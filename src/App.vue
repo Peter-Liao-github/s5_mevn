@@ -31,8 +31,6 @@
             router-link(to="/index") 管理總表
           li
             router-link(to="/create") 管理新增
-          li
-            router-link(to="/edit") 管理修改
     //- router view =========================================
     router-view.my-container 
     //- fixed line QR =========================================

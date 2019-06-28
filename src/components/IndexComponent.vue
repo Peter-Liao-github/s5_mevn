@@ -14,8 +14,8 @@
           tr(v-for="product in products", :key="product._id")
             td {{product.title}}
             td {{product.body}}
-            td #[router-link.my-btn(:to="{ name: 'edit', params: { id: product._id } }") ] edit
-            td #[button.my-btn Delete]
+            td #[router-link.my-btn(:to="{ name: 'edit', params: { id: product._id } }") edit]
+            td #[button.my-btn(@click.prevent='deleteProduct(product._id)') Delete]
 </template>
 
 <script>
@@ -28,6 +28,14 @@ export default {
     this.axios.get(uri).then(response => {
       this.products = response.data
     })
+  },
+  methods:{
+    deleteProduct(id){
+      let uri = `http://localhost:4000/products/delete/${id}`
+      this.axios.delete(uri).then(response => {
+        this.products.splice(this.products.findIndex( i => i._id ===id), 1)
+      })
+    }
   }
 }
 </script>
