@@ -1,25 +1,25 @@
 <template lang='pug'>
   div
     h1 Create
-    form(@submit.prevent='addPost')
+    form(@submit.prevent='addProduct')
       div
-        label Post Title:
-        input(type='text' v-model='post.title')
+        label Product Title:
+        input(type='text' v-model='product.title')
       div
-        label Post Body:
-        textarea(v-model='post.body')
+        label Product Body:
+        textarea(v-model='product.body')
       button Create
 </template>
 
 <script>
 export default {
   data(){
-    return{ post:{} }
+    return{ product:{} }
   },
   methods: {
-    addPost(){
+    addProduct(){
       let uri = 'http://localhost:4000/products/add'
-      this.axios.post(uri, this.post).then(()=>{
+      this.axios.post(uri, this.product).then(()=>{
         this.$router.push({name: 'products'})
       })
     }
