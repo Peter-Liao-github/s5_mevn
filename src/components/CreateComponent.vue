@@ -17,7 +17,12 @@ export default {
     return{ post:{} }
   },
   methods: {
-    addPost(){ console.log(this.post) }
+    addPost(){
+      let uri = 'http://localhost:4000/products/add'
+      this.axios.post(uri, this.post).then(()=>{
+        this.$router.push({name: 'products'})
+      })
+    }
   }
 }
 </script>
