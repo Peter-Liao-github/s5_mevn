@@ -28,6 +28,8 @@
           li
             router-link(to="/customizeds") 客製化選用表
           li
+            router-link(to="/index") 管理總表
+          li
             router-link(to="/create") 管理新增
           li
             router-link(to="/edit") 管理修改

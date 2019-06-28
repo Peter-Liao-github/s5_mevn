@@ -14,6 +14,7 @@ Vue.config.productionTip = false
 import HomeComponent from './components/HomeComponent.vue'
 import ProductsComponent from './components/ProductsComponent.vue'
 import CustomizedsComponent from './components/CustomizedsComponent.vue'
+import IndexComponent from './components/IndexComponent.vue'
 import CreateComponent from './components/CreateComponent.vue'
 import EditComponent from './components/EditComponent.vue'
 
@@ -32,6 +33,11 @@ const routes = [
     name: 'customizeds',
     path: '/customizeds',
     component: CustomizedsComponent
+  },
+  {
+    name: 'index',
+    path: '/index',
+    component: IndexComponent
   },
   {
     name: 'create',
