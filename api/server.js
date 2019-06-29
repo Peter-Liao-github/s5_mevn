@@ -8,7 +8,7 @@ const config = require('./DB.js')
 const productRoute = require('./product.route')
 
 mongoose.Promise = global.Promise
-mongoose.connect(config.DB, { useNewUrlParser: true }).then(
+mongoose.connect(config.DB, { useNewUrlParser: true, useFindAndModify: false }).then(
   () => { console.log('DB is connected') },
   err => { console.log('Cannot connect '+ err) }
 )
