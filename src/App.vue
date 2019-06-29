@@ -11,7 +11,7 @@
     .my-tabs
       .my-container
         ul.my-tabs-ul
-          li
+          li(@click="productsShowing = false")
             router-link(to="/") 首頁
           //- toggle =========================================
           li#tab-product-show(@click="productsShowing = !productsShowing") #[span 產品一覽]
@@ -21,15 +21,15 @@
                   a(href="#")
                     .product-thumbnail
                       h3 產品資訊
-                        .thumb-bgc
-                          img(alt="產品資訊縮圖" src="./assets/product-top.png")
-          li
+                      .thumb-bgc
+                        img(alt="產品資訊縮圖" src="./assets/product-top.png")
+          li(@click="productsShowing = false")
             router-link(to="/products") 產品資訊/下載
-          li
+          li(@click="productsShowing = false")
             router-link(to="/customizeds") 客製化選用表
-          li
+          li(@click="productsShowing = false")
             router-link(to="/index") 管理總表
-          li
+          li(@click="productsShowing = false")
             router-link(to="/create") 管理新增
     //- router view =========================================
     router-view.my-container 
@@ -76,9 +76,13 @@ export default {
   font-family: 'Noto Sans TC', \5FAE\8EDF\6B63\9ED1\9AD4, 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  // *{
-  //   outline: red 1px solid
-  // }
+  *{
+    box-sizing: initial;
+  }
+  a,a:hover,a:visited{
+    color: inherit;
+    text-decoration: none;
+  }
 }
 //- logo =========================================
 .my-{
@@ -117,14 +121,16 @@ export default {
     background: -moz-linear-gradient(rgb(255, 255, 255),rgb(225, 225, 225));
     background: -webkit-linear-gradient(rgb(255, 255, 255),rgb(225, 225, 225));
     background: linear-gradient(rgb(255, 255, 255),rgb(225, 225, 225));
-    height: 33px;
+    height: 37px;
     padding-top: 3px;
     padding-bottom: 2px;
     border-top: 2px solid rgb(225, 225, 225);
     min-width: 1024px;
+    margin-bottom: 1px;
 
     &-ul{
       margin: 3px 0px 0px 0px;
+      padding-bottom: 3px;
     }
     li{
       background-color: rgba(245, 245, 245, 0);
@@ -153,10 +159,7 @@ li{
   float: left;
   list-style: none;
 }
-a,a:hover,a:visited{
-  color: inherit;
-  text-decoration: none;
-}
+
 .clearfix{
   clear: both;
 }
@@ -182,17 +185,15 @@ a,a:hover,a:visited{
   z-index: 9;
   background-color: rgb(200, 200, 200);
   width: 844px;
-  padding: 24px 18px 12px 20px;
+  padding: 16px 20px 20px;
 }
 
 .product-thumbnail{
   display: inline-block;
   margin: 2px;
-  padding-top: 8px;
   width: 152px;
-  height: 207px;
+  height: 233px;
   text-align: center;
-  line-height: 180px;
   &:hover{
     background-color: rgb(128, 128, 128);
     color: white;

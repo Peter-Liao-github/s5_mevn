@@ -1,6 +1,13 @@
 import Vue from 'vue'
 import App from './App.vue'
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'normalize.css'
+
+import { BCarousel, BCarouselSlide } from 'bootstrap-vue'
+Vue.component('b-carousel', BCarousel)
+Vue.component('b-carousel-slide', BCarouselSlide)
 
 import VueRouter from 'vue-router'
 Vue.use(VueRouter);
