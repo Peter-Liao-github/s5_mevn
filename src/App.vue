@@ -76,13 +76,10 @@ export default {
   font-family: 'Noto Sans TC', \5FAE\8EDF\6B63\9ED1\9AD4, 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  *{
-    box-sizing: initial;
-  }
-  a,a:hover,a:visited{
-    color: inherit;
-    text-decoration: none;
-  }
+  // *{
+  //   box-sizing: initial;
+  // }
+  
 }
 //- logo =========================================
 .my-{
@@ -158,6 +155,10 @@ ul{
 li{
   float: left;
   list-style: none;
+}
+a,a:hover,a:visited{
+    color: inherit;
+    text-decoration: none;
 }
 
 .clearfix{

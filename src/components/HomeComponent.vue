@@ -1,23 +1,18 @@
 <template lang='pug'>
   div
     //- carousel
-    div
-      b-carousel(
-        id="carousel-fade"
-        style="text-shadow: 0px 0px 2px #000"
-        fade
-        controls
-        img-width="1024"
-        img-height="480"
-      )
-        b-carousel-slide(
-          caption=""
-          img-src="../assets/NC.jpg"
-        )
-        b-carousel-slide(
-          caption=""
-          img-src="../assets/ST1.jpg"
-        )
+    div.carousel
+      slider(
+        animation='fade' 
+        height='480px' 
+        indicators='false'
+        interval=3500
+        speed=750)
+        slider-item(
+          v-for='(item, index) in carouselList' 
+          :key='index')
+          img(:src= '(item.src)' :alt= '(item.alt)' )
+          button
     //- news
     //- vedio
     //- contact
@@ -30,15 +25,22 @@ export default {
   name: 'HomeComponent',
   props: {
     msg: String
-  }
+  },
+  data() {
+    return {
+      carouselList: [
+        {src: require('@/assets/NC.jpg'), alt: 'NC高精度帶導向汽缸'},
+        {src: require('@/assets/ST1.jpg'), alt: 'ST1可客制、多元使用'}
+      ],
+    }
+  },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang='scss'>
-// @import '~/bootstrap/dist/css/bootstrap.css';
-// @import '~/bootstrap-vue/dist/bootstrap-vue.css';
-b-caroudel-slide{
-
+<style lang="scss" scoped>
+.carousel{
+  width: 1024px;
+  height: 480px;
 }
 </style>
