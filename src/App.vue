@@ -5,7 +5,7 @@
       h1.logo #[span S5 New Ultra]
         router-link(to="/")
           .top-logo
-            img.img-responsive.center-block(alt="S5 New Ultra logo" src="./assets/logo-horizontal.png")
+            img.img-responsive.center-block(alt="S5 New Ultra logo" src="@/assets/images/logo-horizontal.png")
           //- .clearfix
     //- tabs =========================================
     .my-tabs
@@ -19,10 +19,12 @@
               #product-show-block
                 .product-show-content
                   a(href="#")
-                    .product-thumbnail
-                      h3 產品資訊
+                    .product-thumbnail(
+                      v-for='(item, index) in thumbnails'
+                      :key='index')
+                      h3 {{item.title}}
                       .thumb-bgc
-                        img(alt="產品資訊縮圖" src="./assets/product-top.png")
+                        img(:alt='(item.alt)' :src='(item.src)')
           li(@click="productsShowing = false")
             router-link(to="/products") 產品資訊/下載
           li(@click="productsShowing = false")
@@ -36,7 +38,7 @@
     //- fixed line QR =========================================
     .line-qr 
       h3 客服LINE ID <br>@xyp7024w<br>
-      img(alt="Line QR code" src="./assets/lineQRcode.jpg")
+      img(alt="Line QR code" src="./assets/images/lineQRcode.jpg")
     //- footer =========================================
     .my-footer
       ul
@@ -58,7 +60,10 @@ export default {
     HomeComponent
   },
   data() {
-    return { productsShowing: false }
+    return { 
+      productsShowing: false,
+      thumbnails: [{ title: '產品資訊', src: require('@/assets/images/product-top.png'), alt: '產品資訊目錄封面'}],
+    }
   },
   methods: {
     // for ie
@@ -72,13 +77,16 @@ export default {
 
 <style lang='scss'>
 @import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
+$mainBlue: #1B5185;
+
 #app {
   font-family: 'Noto Sans TC', \5FAE\8EDF\6B63\9ED1\9AD4, 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  // *{
-  //   box-sizing: initial;
-  // }
+  *{
+    // box-sizing: initial;
+    // outline: red 1px solid;
+  }
   
 }
 //- logo =========================================
@@ -120,14 +128,12 @@ export default {
     background: linear-gradient(rgb(255, 255, 255),rgb(225, 225, 225));
     height: 37px;
     padding-top: 3px;
-    padding-bottom: 2px;
     border-top: 2px solid rgb(225, 225, 225);
     min-width: 1024px;
-    margin-bottom: 1px;
+    margin-bottom: 2px;
 
     &-ul{
-      margin: 3px 0px 0px 0px;
-      padding-bottom: 3px;
+      margin: 6px 0px 0px 0px;
     }
     li{
       background-color: rgba(245, 245, 245, 0);
@@ -139,7 +145,7 @@ export default {
       border-right: 1px solid rgb(225, 225, 225);
       &:hover{
         border-bottom: 2px solid;
-        border-bottom-color: #1B5185;
+        border-bottom-color: $mainBlue;
       }
     }
   }
@@ -176,14 +182,13 @@ a,a:hover,a:visited{
     margin-left: -9px;
     padding-top: 37px;
     position: absolute;
-    z-index: 9;
+    z-index: 999;
     width: 79px;
     cursor: pointer;
   }
 }
 .product-show-content{
   position: relative;
-  z-index: 9;
   background-color: rgb(200, 200, 200);
   width: 844px;
   padding: 16px 20px 20px;
