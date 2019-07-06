@@ -57,7 +57,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-$divColor: #f5f5f5;
+@import '../assets/variables';
 $divPaddingY: 2px;
 $rightSideUpperHeigh: 198px;
 $rightSideDownHeigh: 350px - $rightSideUpperHeigh - 3*$divPaddingY ;
@@ -75,7 +75,7 @@ $rightSideDownHeigh: 350px - $rightSideUpperHeigh - 3*$divPaddingY ;
 
 .news-{
   &block{
-    background-color: $divColor;
+    background-color: $homeDivColor;
     width: 698px;
     height: 350px;
     float: left;
@@ -94,7 +94,7 @@ $rightSideDownHeigh: 350px - $rightSideUpperHeigh - 3*$divPaddingY ;
 }
 
 h2{
-  border-bottom: 2px solid #1B5185;
+  border-bottom: 2px solid $mainBlue;
   padding-bottom: 8px;
   margin: 8px auto;
   font-size: 22px;
@@ -106,14 +106,14 @@ h3{
 
 .video-block{
   margin-top: 4px;
-  background-color: $divColor;
+  background-color: $homeDivColor;
   height: $rightSideUpperHeigh;
   @extend %rightSideBlock;
 }
 
 .contact{
   margin-top: 2px;
-  background-color: $divColor;
+  background-color: $homeDivColor;
   height: $rightSideDownHeigh;
   @extend %rightSideBlock;
   p{
@@ -123,8 +123,6 @@ h3{
 }
 
 .root::after{
-  content: '';
-  display: block;
-  clear: both;
+  @extend %clearfix
 }
 </style>

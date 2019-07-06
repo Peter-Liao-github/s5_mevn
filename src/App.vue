@@ -18,13 +18,14 @@
             template(v-if="productsShowing")
               #product-show-block
                 .product-show-content
-                  a(href="#")
                     .product-thumbnail(
                       v-for='(item, index) in thumbnails'
                       :key='index')
-                      h3 {{item.title}}
-                      .thumb-bgc
-                        img(:alt='(item.alt)' :src='(item.src)')
+                      //- :to='/products/:id'
+                      router-link(to="/products")
+                        h3 {{item.title}}
+                        .thumb-bgc
+                          img(:alt='(item.alt)' :src='(item.src)')
           li(@click="productsShowing = false")
             router-link(to="/products") 產品資訊/下載
           li(@click="productsShowing = false")
@@ -62,7 +63,14 @@ export default {
   data() {
     return { 
       productsShowing: false,
-      thumbnails: [{ title: '產品資訊', src: require('@/assets/images/product-top.png'), alt: '產品資訊目錄封面'}],
+      thumbnails: [
+        { title: '產品資訊', src: require('@/assets/images/product-top.png'), alt: '產品資訊目錄封面'},
+        { title: 'PM變距系列', src: require('@/assets/images/PM變距系列.png'), alt: 'PM變距系列縮圖'},
+        { title: 'NC氣缸系列', src: require('@/assets/images/NC氣缸系列.jpg'), alt: 'NC氣缸系列縮圖'},
+        { title: '氣缸磁力感測器', src: require('@/assets/images/氣缸磁力感測器.jpg'), alt: '氣缸磁力感測器縮圖'},
+        { title: '迷你繼手', src: require('@/assets/images/迷你繼手系列.jpg'), alt: '迷你繼手系列縮圖'},
+        { title: '流量/溫度計', src: require('@/assets/images/流量.溫度計.jpg'), alt: '流量.溫度計縮圖'},
+      ],
     }
   },
   methods: {
@@ -77,7 +85,8 @@ export default {
 
 <style lang='scss'>
 @import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
-$mainBlue: #1B5185;
+@import './assets/variables';
+
 
 #app {
   font-family: 'Noto Sans TC', \5FAE\8EDF\6B63\9ED1\9AD4, 'Avenir', Helvetica, Arial, sans-serif;
@@ -105,9 +114,7 @@ $mainBlue: #1B5185;
 .logo{
   margin: 0;
   a::after{
-    content: '';
-    clear: both;
-    display: block;
+    @extend %clearfix;
   }
   >span{
     display: none;
@@ -123,9 +130,7 @@ $mainBlue: #1B5185;
 //- tabs =========================================
 .my-{
   &tabs{
-    background: -moz-linear-gradient(rgb(255, 255, 255),rgb(225, 225, 225));
-    background: -webkit-linear-gradient(rgb(255, 255, 255),rgb(225, 225, 225));
-    background: linear-gradient(rgb(255, 255, 255),rgb(225, 225, 225));
+    @include bgGradientColorY; //- mixin with default values
     height: 37px;
     padding-top: 3px;
     border-top: 2px solid rgb(225, 225, 225);
@@ -134,15 +139,19 @@ $mainBlue: #1B5185;
 
     &-ul{
       margin: 6px 0px 0px 0px;
+      &::after{
+        display: inline;
+        content:'';
+        border-right: 1px solid rgb(225, 225, 225);
+        font-size: 0.9em;
+      }
     }
     li{
-      background-color: rgba(245, 245, 245, 0);
       margin-bottom: 0px;
       padding: 8px 8px 6px 8px;
       font-size: 0.9em;
       font-weight: bolder;
       border-left: 1px solid rgb(225, 225, 225);
-      border-right: 1px solid rgb(225, 225, 225);
       &:hover{
         border-bottom: 2px solid;
         border-bottom-color: $mainBlue;
@@ -153,9 +162,7 @@ $mainBlue: #1B5185;
 ul{
   padding-left: 0;
   &::after{
-    content: '';
-    clear: both;
-    display: block;
+    @extend %clearfix
   }
 }
 li{
@@ -167,10 +174,6 @@ a,a:hover,a:visited{
     text-decoration: none;
 }
 
-.clearfix{
-  clear: both;
-}
-
 #tab-product-show>span{
   cursor: pointer;
 }
@@ -178,18 +181,17 @@ a,a:hover,a:visited{
 //- toggle =========================================
 #product-show-{
   &block{
-    margin-top: -29px;
+    margin-top: -33px;
     margin-left: -9px;
-    padding-top: 37px;
+    padding-top: 41px;
     position: absolute;
     z-index: 999;
-    width: 79px;
+    width: 75px;
     cursor: pointer;
   }
 }
 .product-show-content{
-  position: relative;
-  background-color: rgb(200, 200, 200);
+  background-color: rgb(225, 225, 225);
   width: 844px;
   padding: 16px 20px 20px;
 }
@@ -205,9 +207,8 @@ a,a:hover,a:visited{
     color: white;
   }
   img { /* 132px * 160px */
-    margin: 0 auto;
-    padding-bottom: 8px;
-    vertical-align: middle;
+    margin: auto;
+    display: block;
     max-width: 132px;
     max-height: 156px;
   }
