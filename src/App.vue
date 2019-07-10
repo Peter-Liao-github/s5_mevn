@@ -85,7 +85,6 @@ export default {
 
 <style lang='scss'>
 @import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
-@import './assets/variables';
 
 
 #app {
@@ -202,23 +201,30 @@ a,a:hover,a:visited{
   width: 152px;
   height: 233px;
   text-align: center;
+  vertical-align: top;
   &:hover{
     background-color: rgb(128, 128, 128);
     color: white;
   }
   img { /* 132px * 160px */
     margin: auto;
-    display: block;
-    max-width: 132px;
-    max-height: 156px;
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
   }
 }
 .thumb-bgc {
   background-color: #FFF;
   width: 132px;
   height: 164px;
-  vertical-align: middle;
   margin: 0 auto;
+  &::before{
+    content: '';
+    width: 0px;
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+  }
 }
 
 //- fixed line QR =========================================

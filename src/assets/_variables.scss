@@ -1,0 +1,14 @@
+$mainBlue: #1B5185;
+$homeDivColor: #f5f5f5;
+
+%clearfix{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+@mixin bgGradientColorY($upColor: #fff, $downColor: #e1e1e1){
+  background: -moz-linear-gradient($upColor,$downColor);
+  background: -webkit-linear-gradient($upColor,$downColor);
+  background: linear-gradient($upColor,$downColor);
+}
