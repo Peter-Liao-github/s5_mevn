@@ -1,12 +1,12 @@
 <template lang='pug'>
   div
-    h1 Create
+    h1 新增產品
     form(@submit.prevent='addProduct')
       div
-        label Product Title:
+        label 產品名稱：
         input(type='text' v-model='product.title')
       div
-        label Product Body:
+        label 產品內容：
         textarea(v-model='product.body')
       button Create
 </template>
@@ -20,7 +20,7 @@ export default {
     addProduct(){
       let uri = 'http://localhost:4000/products/add'
       this.axios.post(uri, this.product).then(()=>{
-        this.$router.push({name: 'products'})
+        this.$router.push({name: 'edit-products'})
       })
     }
   }

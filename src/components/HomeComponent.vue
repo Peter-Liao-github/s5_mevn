@@ -75,7 +75,7 @@ $rightSideDownHeigh: 350px - $rightSideUpperHeigh - 3*$divPaddingY ;
 
 .news-{
   &block{
-    background-color: $homeDivColor;
+    background-color: $lightGray;
     width: 698px;
     height: 350px;
     float: left;
@@ -106,14 +106,14 @@ h3{
 
 .video-block{
   margin-top: 4px;
-  background-color: $homeDivColor;
+  background-color: $lightGray;
   height: $rightSideUpperHeigh;
   @extend %rightSideBlock;
 }
 
 .contact{
   margin-top: 2px;
-  background-color: $homeDivColor;
+  background-color: $lightGray;
   height: $rightSideDownHeigh;
   @extend %rightSideBlock;
   p{

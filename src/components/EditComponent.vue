@@ -27,7 +27,7 @@ export default {
     updateProduct(){
       let uri = `http://localhost:4000/products/update/${this.$route.params.id}`
       this.axios.post(uri, this.product).then(()=>{
-        this.$router.push({name: 'products'})
+        this.$router.push({name: 'edit-products'})
       })
     }
   }

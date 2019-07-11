@@ -20,6 +20,8 @@ import CustomizedsComponent from './components/CustomizedsComponent.vue'
 import IndexComponent from './components/IndexComponent.vue'
 import CreateComponent from './components/CreateComponent.vue'
 import EditComponent from './components/EditComponent.vue'
+import EditNewsComponent from './components/EditNewsComponent.vue'
+import EditProductsComponent from './components/EditProductsComponent.vue'
 
 const routes = [
   {
@@ -40,7 +42,16 @@ const routes = [
   {
     name: 'index',
     path: '/index',
-    component: IndexComponent
+    component: IndexComponent,
+    children: [{
+      path: 'editnews',
+      name: 'edit-news',
+      component: EditNewsComponent,
+    },{
+      path: 'editproducts',
+      name: 'edit-products',
+      component: EditProductsComponent,
+    }]
   },
   {
     name: 'create',
@@ -54,7 +65,7 @@ const routes = [
   },
 ]
 
-const router = new VueRouter({ mode: 'history', routes: routes})
+const router = new VueRouter({ mode: 'history', routes})
 new Vue(Vue.util.extend({ router }, App)).$mount('#app')
 
 // new Vue({

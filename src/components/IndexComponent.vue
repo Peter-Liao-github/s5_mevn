@@ -1,46 +1,55 @@
 <template lang='pug'>
   div
-    h1 Products
+    h2 管理總表
+    ul
+      li #[router-link(to='/index/editnews') 消息管理]
+      li 影片管理(youtube)
+      li #[router-link(to='/index/editproducts') 產品管理]
     div
-      router-link.my-btn(:to="{ name: 'create' }") Create product
-    div
-      table.my-table
-        thead
-          tr
-            th Title
-            th Body
-            th Description
-        tbody
-          tr(v-for="product in products", :key="product._id")
-            td {{product.title}}
-            td {{product.body}}
-            td #[router-link.my-btn(:to="{ name: 'edit', params: { id: product._id } }") edit]
-            td #[button.my-btn(@click.prevent='deleteProduct(product._id)') Delete]
+      router-view 
 </template>
 
 <script>
 export default {
-  data(){
-    return { products: [] }
-  },
-  created(){
-    let uri = 'http://localhost:4000/products'
-    this.axios.get(uri).then(response => {
-      this.products = response.data
-    })
-  },
-  methods:{
-    deleteProduct(id){
-      let uri = `http://localhost:4000/products/delete/${id}`
-      this.axios.delete(uri).then(response => {
-        this.products.splice(this.products.findIndex( i => i._id ===id), 1)
-      })
-    }
-  }
+  
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang='scss'>
+<style scope lang='scss'>
+  li{
+    padding-right: 32px;
+  }
 
+  .my-btn{
+    border: 1px solid $darkGray;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: $lightGray;
+    padding: 4px;
+    margin: 2px 0;
+    box-shadow: 1px 1px 4px $darkGray;
+    display: inline-block;
+    &:hover{
+      transition: 200ms;
+      background-color: $darkGray;
+      color: #fff;
+      font-weight: 600;
+    }
+  }
+  .danger{
+    background-color: $lightRed;
+    border-color: $darkRed;
+    &:hover{
+      background-color: $darkRed;
+    }
+  }
+  table{
+    text-align: left;
+    margin-top: 12px;
+  }
+  th{
+    padding-right: 32px;
+    min-width: fit-content;
+  }
 </style>
