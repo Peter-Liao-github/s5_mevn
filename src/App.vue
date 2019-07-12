@@ -31,7 +31,7 @@
           li(@click="productsShowing = false")
             router-link(to="/customizeds") 客製化選用表
           li(@click="productsShowing = false")
-            router-link(to="/index") 管理總表
+            router-link(:to="{name: 'edit-products'}") 管理總表
           li(@click="productsShowing = false")
             router-link(to="/create") 管理新增
     //- router view =========================================

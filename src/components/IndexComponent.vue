@@ -2,9 +2,9 @@
   div
     h2 管理總表
     ul
-      li #[router-link(to='/index/editnews') 消息管理]
-      li 影片管理(youtube)
-      li #[router-link(to='/index/editproducts') 產品管理]
+      li.my-btn #[router-link(to='/index/editnews') 消息管理]
+      li.my-btn #[router-link(to='/index/editproducts') 產品管理]
+      li.my-btn 影片管理(連結至youtube)
     div
       router-view 
 </template>
@@ -19,6 +19,10 @@ export default {
 <style scope lang='scss'>
   li{
     padding-right: 32px;
+    &.my-btn{
+      margin-right: 8px;
+      display: inline-block;
+    }
   }
 
   .my-btn{
@@ -27,13 +31,12 @@ export default {
     cursor: pointer;
     background-color: $lightGray;
     padding: 4px;
-    margin: 2px 0;
+    margin: 2px 0px;
     box-shadow: 1px 1px 4px $darkGray;
     display: inline-block;
     &:hover{
-      transition: 200ms;
+      transition: $btnTransitionTime;
       background-color: $darkGray;
-      color: #fff;
       font-weight: 600;
     }
   }
@@ -42,6 +45,7 @@ export default {
     border-color: $darkRed;
     &:hover{
       background-color: $darkRed;
+      color: #fff;
     }
   }
   table{
